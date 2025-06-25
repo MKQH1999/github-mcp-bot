@@ -1,4 +1,4 @@
-from github import Github
+from github import Github # type: ignore
 
 class ProjectTracker:
     def __init__(self, token):

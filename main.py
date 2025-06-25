@@ -5,6 +5,9 @@ from github_api import GitHubClient
 from tracker import ProjectTracker
 from reports import ProjectReporter
 import os
+from dotenv import load_dotenv # type: ignore
+load_dotenv()
+
 
 app = FastAPI()
 ctx_handler = ContextHandler()
@@ -14,6 +17,7 @@ gh = GitHubClient(token=os.getenv("GITHUB_TOKEN"))
 @app.post("/webhook")
 async def github_webhook(req: Request):
     payload = await req.json()
+    print("Received payload:", payload)  # هذا يساعدك تشوف شكل البيانات
     if "issue" in payload:
         ctx = ctx_handler.create_from_issue(payload)
         reply = gpt.reply_to_issue(ctx)
@@ -29,3 +33,7 @@ def project_report(repo_name: str):
     summary = reporter.generate_report(context)
 
     return {"summary": summary, "context": context}
+
+@app.get("/")
+def root():
+    return {"message": "MCP Bot is running 🚀"}
