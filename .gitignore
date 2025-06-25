@@ -1,0 +1,39 @@
+# ملفات بيئة Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# ملفات البيئة الافتراضية
+env/
+venv/
+.venv/
+
+# ملفات التكوين المخفية
+.env
+.env.*
+
+# ملفات/مجلدات النظام
+.DS_Store
+Thumbs.db
+
+# ملفات logs
+*.log
+
+# ملفات مؤقتة
+*.tmp
+*.bak
+
+# ملفات المشاريع التفاعلية
+.ipynb_checkpoints/
+
+# ملفات التثبيت
+*.egg-info/
+dist/
+build/
+
+# محررات
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
